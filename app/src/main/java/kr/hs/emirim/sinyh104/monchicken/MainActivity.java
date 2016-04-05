@@ -1,5 +1,7 @@
 package kr.hs.emirim.sinyh104.monchicken;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,18 +9,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText mName;
     Button mButton;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mName = (EditText)findViewById(R.id.name);
-        mButton=(Button)findViewById(R.id.btn_show_me_the_chicks);
+        mName = (EditText) findViewById(R.id.name);
+        mButton = (Button) findViewById(R.id.btn_show_me_the_chicks);
         mButton.setOnClickListener(this);
     }
 
@@ -35,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View v) {
-        Toast.makeText(this,"배고파요!",Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "배고파요!", Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(this,ResultActivity.class );
+        startActivity(intent);
     }
 }
